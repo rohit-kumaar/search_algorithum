@@ -7,23 +7,25 @@ const mobilesData = async () => {
 };
 
 const data = mobilesData();
-data.then((data) => {
-  // console.table(`${element.brand} ${element.name}`)
-  data.map((element) => {
-    const div = document.createElement("div");
-    div.classList = "checkbox";
-    const label = document.createElement("label");
-    div.appendChild(label);
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.name = "brandName";
-    label.innerText = `${element.brand}`;
-    label.appendChild(input);
-    const body = document.querySelector("body");
-    body.appendChild(div);
-  });
-});
+data
+  .then((data) => {
+    let productNameList = "";
+    let productRamList = "";
+    data.forEach((product) => {
+      productNameList += ` <div>
+                    <label><input type="checkbox" />${product.name}</label>
+              </div>`;
 
-function createElement() {
-    
-}
+      productRamList += `<div>
+                            <label><input type="checkbox" />${product.ram}</label>
+                        </div>`;
+    });
+
+    const productName = document.querySelector(".productName");
+    const productRam = document.querySelector(".productRam");
+    productName.innerHTML = productNameList;
+    productRam.innerHTML = productRamList;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
