@@ -50,6 +50,21 @@ data
         } else {
           console.log("no");
         }
+
+        if (this.checked != true) {
+          const checkedValue = this.value.toLowerCase();
+
+          const accessAllCard = document.querySelectorAll(".card");
+          accessAllCard.forEach((element) => {
+            element.style.display = "block";
+
+            const searchingText = element.textContent.toLocaleLowerCase();
+            console.log(searchingText);
+
+            if (searchingText.indexOf(checkedValue) != -1) {
+            }
+          });
+        }
       });
     }
   })
