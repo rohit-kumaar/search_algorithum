@@ -7,12 +7,54 @@
     <title>Mala</title>
     <script src="mydata.json" defer></script>
     <script src="script.js" defer></script>
+
+    <style>
+      *,
+      *::after,
+      *::before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .search {
+        display: flex;
+        gap: 30px;
+      }
+
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .card {
+        width: 100px;
+        aspect-ratio: 1 / 1;
+        border: 5px solid red;
+        padding: 20px;
+      }
+    </style>
   </head>
   <body>
-    <h2>Product Name</h2>
-    <div class="productName"></div>
+    <div class="search">
+      <div>
+        <h2>Product Name</h2>
+        <div class="productName"></div>
+      </div>
 
-    <h2>Product Ram</h2>
-    <div class="productRam"></div>
+      <div>
+        <h2>Product Ram</h2>
+        <div class="productRam"></div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div>Brand</div>
+        <div>Name</div>
+        <div>Ram</div>
+      </div>
+    </div>
   </body>
 </html>

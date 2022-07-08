@@ -13,7 +13,7 @@ data
     let productRamList = "";
     data.forEach((product) => {
       productNameList += ` <div>
-                    <label><input type="checkbox" />${product.name}</label>
+                    <label><input type="checkbox" class="productName"/>${product.name}</label>
               </div>`;
 
       productRamList += `<div>
@@ -29,3 +29,6 @@ data
   .catch((err) => {
     console.log(err);
   });
+
+
+  
