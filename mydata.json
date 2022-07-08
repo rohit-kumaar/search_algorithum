@@ -246,18 +246,5 @@
       "name": "pine green"
     },
     "image": "oneplus-9-pro-5g.webp"
-  },
-  {
-    "brand": "Oppo",
-    "name": "Oppo k 10 5G",
-    "price": 40000,
-    "camera": "48MP",
-    "storage": "128GB",
-    "ram": "8GB",
-    "color": {
-      "code": "#000",
-      "name": "black"
-    },
-    "image": "oppo_k10.webp"
   }
 ]

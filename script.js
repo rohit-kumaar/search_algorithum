@@ -7,98 +7,43 @@ const mobilesData = async () => {
 };
 
 const data = mobilesData();
-data
-  .then((data) => {
-    let card = "";
-    data.forEach((product) => {
-      productsNameBtn(product);
+data.then((data) => {
+  const input_ram = document.querySelectorAll(".ram");
+  const brand_ram = document.querySelectorAll(".brandRam");
 
-      productRamBtn(product);
+  // select all product ram checkbox
+  input_ram.forEach((element) => {
+    const input_ram_value_attr = element.getAttribute("value");
+    const input_ram_value_attr_lowercase = input_ram_value_attr.toLowerCase();
 
-      card += ` <div class="card">
-                    <div>${product.brand}</div>
-                    <div>${product.name}</div>
-                    <div>${product.ram}</div>
-                </div>`;
+    element.addEventListener("click", function () {
+      if (this.checked == true) {
+        brand_ram.forEach((element) => {
+          const brand_ram_text_lowercase = element.textContent.toLowerCase();
+          const brand_ram_parent_elem = element.parentElement;
+
+          // const card = document.querySelectorAll(".card");
+          if (input_ram_value_attr_lowercase != brand_ram_text_lowercase) {
+            brand_ram_parent_elem.style.display = "none";
+          }
+
+          if (
+            (brand_ram_parent_elem.style.display = "none") &&
+            input_ram_value_attr_lowercase == brand_ram_text_lowercase
+          ) {
+            brand_ram_parent_elem.style.display = "block";
+          }
+          // card.forEach((element) => {});
+        });
+      } else {
+        brand_ram.forEach((element) => {
+          const brand_ram_text_lowercase = element.textContent.toLowerCase();
+          const brand_ram_parent_elem = element.parentElement;
+          brand_ram_parent_elem.style.display = "block";
+        });
+      }
     });
-
-    const cards = document.querySelector(".cards");
-
-    cards.innerHTML = card;
-
-    const checkboxs = document.getElementsByTagName("input");
-    for (const checkbox of checkboxs) {
-      checkbox.addEventListener("click", function () {
-        if (this.checked == true) {
-          const checkedValue = this.value.toLowerCase();
-
-          // console.log(this.value.toLowerCase());
-
-          const accessAllCard = document.querySelectorAll(".card");
-          accessAllCard.forEach((element) => {
-            // let cardInnerHtml = element.innerHTML;
-
-            const searchingText = element.textContent.toLocaleLowerCase();
-            console.log(searchingText);
-
-            if (searchingText.indexOf(checkedValue) != -1) {
-              element.style.display = "block";
-            } else {
-              element.style.display = "none";
-            }
-          });
-        } else {
-          console.log("no");
-        }
-
-        if (this.checked != true) {
-          const checkedValue = this.value.toLowerCase();
-
-          const accessAllCard = document.querySelectorAll(".card");
-          accessAllCard.forEach((element) => {
-            element.style.display = "block";
-
-            const searchingText = element.textContent.toLocaleLowerCase();
-            console.log(searchingText);
-
-            if (searchingText.indexOf(checkedValue) != -1) {
-            }
-          });
-        }
-      });
-    }
-  })
-  .catch((err) => {
-    console.log(err);
   });
 
-function productsNameBtn(product) {
-  const div = document.createElement("div");
-  const label = document.createElement("label");
-  const input = document.createElement("input");
-  const span = document.createElement("span");
-  span.innerText = `${product.name}`;
-  input.type = "checkbox";
-  input.value = `${product.name}`;
-  input.className = "productName";
-  div.appendChild(label);
-  label.appendChild(input);
-  label.appendChild(span);
-  const productName = document.querySelector(".productName");
-  productName.appendChild(div);
-}
-
-function productRamBtn(product) {
-  const div = document.createElement("div");
-  const label = document.createElement("label");
-  const input = document.createElement("input");
-  const span = document.createElement("span");
-  span.innerText = `${product.ram}`;
-  input.type = "checkbox";
-  input.value = `${product.ram}`;
-  div.appendChild(label);
-  label.appendChild(input);
-  label.appendChild(span);
-  const productRam = document.querySelector(".productRam");
-  productRam.appendChild(div);
-}
+  data.forEach((product) => {});
+});
